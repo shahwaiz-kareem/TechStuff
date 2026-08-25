@@ -30,27 +30,26 @@ const SearchPage = async ({ searchParams }: Props) => {
   }
 
   return (
-    <div>
-      <SectionTitle title="Search Page" path="Home | Search" />
-      <div className="max-w-screen-2xl mx-auto">
+
+      <div className="max-w-screen-2xl px-4 md:px-8 py-8 mx-auto ">
         {sp?.search && (
-          <h3 className="text-4xl text-center py-10 max-sm:text-3xl">
-            Showing results for {sanitize(sp?.search)}
+          <h3 className="text-3xl text-center py-4 max-sm:text-2xl">
+            Showing results for {sanitize(sp?.search)}...
           </h3>
         )}
-        <div className="grid grid-cols-4 justify-items-center gap-x-2 gap-y-5 max-[1300px]:grid-cols-3 max-lg:grid-cols-2 max-[500px]:grid-cols-1">
+        <div className="grid grid-cols-4 justify-items-center gap-x-2 gap-y-5 max-[1300px]:grid-cols-3 max-lg:grid-cols-2 max-[500px]:grid-cols-1 h-full">
           {products.length > 0 ? (
             products.map((product: any) => (
-              <ProductItem key={product.id} product={product} color="black" />
+              <ProductItem key={product.id} product={product}  />
             ))
           ) : (
-            <h3 className="text-3xl mt-5 text-center w-full col-span-full max-[1000px]:text-2xl max-[500px]:text-lg">
-              No products found for specified query
+            <h3 className="text-2xl mt-5 text-center w-full col-span-full h-full max-[1000px]:text-1xl max-[500px]:text-md">
+              No results found for {sanitize(sp?.search)}
             </h3>
           )}
         </div>
       </div>
-    </div>
+
   );
 };
 

@@ -1,7 +1,7 @@
 // *********************
 // Role of the component: Wishlist icon with quantity located in the header
 // Name of the component: HeartElement.tsx
-// Developer: Aleksandar Kuzmanovic
+// Developer: Shahwaiz Karim
 // Version: 1.0
 // Component call: <HeartElement />
 // Input parameters: no input parameters
@@ -19,7 +19,7 @@ const HeartElement = ({wishQuantity}: {wishQuantity: number}) => {
     <div className="relative">
       <Link href="/wishlist">
         <FaHeart className="text-2xl text-black" />
-        <span className="block w-6 h-6 font-bold bg-blue-600 text-white rounded-full flex justify-center items-center absolute top-[-17px] right-[-22px]">
+        <span className="block w-6 h-6 font-bold bg-brand text-white rounded-full flex justify-center items-center absolute top-[-17px] right-[-22px]">
           { wishQuantity }
         </span>
       </Link>

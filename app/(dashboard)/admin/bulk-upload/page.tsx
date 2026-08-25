@@ -1,7 +1,7 @@
 // *********************
 // Role of the component: Bulk upload products page for admin dashboard
 // Name of the component: BulkUpload.tsx
-// Developer: Aleksandar Kuzmanovic (modified)
+// Developer: Shahwaiz Karim (modified)
 // Version: 1.0
 // Component call: <BulkUpload />
 // Input parameters: no input parameters
@@ -198,7 +198,7 @@ Another Product,149.99,Another Manufacturer,5,https://example.com/image2.jpg,Ano
             <FaFileUpload className="text-6xl text-gray-400 mx-auto mb-4" />
             <p className="text-lg mb-2">
               {file ? (
-                <span className="font-semibold text-blue-600">
+                <span className="font-semibold text-brand">
                   Selected: {file.name} ({(file.size / 1024).toFixed(2)} KB)
                 </span>
               ) : (
@@ -215,7 +215,7 @@ Another Product,149.99,Another Manufacturer,5,https://example.com/image2.jpg,Ano
             />
             <label
               htmlFor="file-upload"
-              className="inline-block bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-6 rounded cursor-pointer transition-colors"
+              className="inline-block bg-brand hover:bg-brand/90 text-white font-bold py-2 px-6 rounded cursor-pointer transition-colors"
             >
               Select CSV File
             </label>
@@ -231,7 +231,7 @@ Another Product,149.99,Another Manufacturer,5,https://example.com/image2.jpg,Ano
               className={`w-full py-4 px-6 rounded-lg font-bold text-white text-lg transition-colors ${
                 uploading
                   ? "bg-gray-400 cursor-not-allowed"
-                  : "bg-blue-500 hover:bg-blue-600"
+                  : "bg-brand hover:bg-brand/90"
               }`}
             >
               {uploading ? (
@@ -303,7 +303,7 @@ Another Product,149.99,Another Manufacturer,5,https://example.com/image2.jpg,Ano
                     <p className="font-semibold">Upload Statistics:</p>
                     <div className="grid grid-cols-3 gap-4">
                       <div className="text-center">
-                        <p className="text-2xl font-bold text-blue-600">
+                        <p className="text-2xl font-bold text-brand">
                           {uploadResult.details.processed}
                         </p>
                         <p className="text-sm text-gray-600">Processed</p>

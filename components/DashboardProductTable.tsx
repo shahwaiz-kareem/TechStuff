@@ -1,7 +1,7 @@
 // *********************
 // Role of the component: Product table component on admin dashboard page
 // Name of the component: DashboardProductTable.tsx
-// Developer: Aleksandar Kuzmanovic
+// Developer: Shahwaiz Karim
 // Version: 1.0
 // Component call: <DashboardProductTable />
 // Input parameters: no input parameters
@@ -101,7 +101,7 @@ const DashboardProductTable = () => {
                     </span>) : (<span className="badge badge-error text-white badge-sm">
                       Out of stock
                     </span>) }
-                    
+
                   </td>
                   <td>${product?.price}</td>
                   <th>

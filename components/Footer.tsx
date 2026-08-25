@@ -1,109 +1,125 @@
 // *********************
-// Role of the component: Footer component
+// Role of the component: Thin horizontal product showcase footer
 // Name of the component: Footer.tsx
-// Developer: Aleksandar Kuzmanovic
-// Version: 1.0
+// Developer: Shahwaiz Karim
+// Version: 3.2
 // Component call: <Footer />
 // Input parameters: no input parameters
-// Output: Footer component
+// Output: Simple, minimal, responsive horizontal footer
 // *********************
 
-import { navigation } from "@/lib/utils";
 import Image from "next/image";
+import Link from "next/link";
 import React from "react";
+import {
+  FaFacebookF,
+  FaInstagram,
+  FaLinkedinIn,
+  FaXTwitter,
+} from "react-icons/fa6";
+
+const CopyrightPara = () => {
+  "use client";
+
+  return (
+    <p className="text-xs text-slate-400 sm:text-sm">
+      © {new Date().getFullYear()} Singitronic. All rights reserved.
+    </p>
+  );
+};
 
 const Footer = () => {
   return (
-    <footer className="bg-white" aria-labelledby="footer-heading">
-      <div>
-        <h2 id="footer-heading" className="sr-only">
-          Footer
-        </h2>
-        <div className="mx-auto max-w-screen-2xl px-6 lg:px-8 pt-24 pb-14">
-          <div className="xl:grid xl:grid-cols-3 xl:gap-8">
+    <footer
+      className="border-t border-slate-200 bg-white"
+      aria-labelledby="footer-heading"
+    >
+      <h2 id="footer-heading" className="sr-only">
+        Footer
+      </h2>
+
+      <div className="mx-auto max-w-screen-2xl px-5 py-5 sm:px-8 lg:px-12">
+        <div className="flex flex-col items-center justify-between gap-4 sm:flex-row">
+          {/* Logo */}
+          <Link href="/" aria-label="Singitronic home">
             <Image
-              src="/logo v1.png"
+              src="/logo.png"
               alt="Singitronic logo"
               width={250}
               height={250}
-              className="h-auto w-auto"
+              className="h-auto w-36 sm:w-12"
             />
-            <div className="mt-16 grid grid-cols-2 gap-8 xl:col-span-2 xl:mt-0">
-              <div className="md:grid md:grid-cols-2 md:gap-8">
-                <div>
-                  <h3 className="text-lg font-bold leading-6 text-blue-600">
-                    Sale
-                  </h3>
-                  <ul role="list" className="mt-6 space-y-4">
-                    {navigation.sale.map((item) => (
-                      <li key={item.name}>
-                        <a
-                          href={item.href}
-                          className="text-sm leading-6 text-black hover:text-gray-700"
-                        >
-                          {item.name}
-                        </a>
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-                <div className="mt-10 md:mt-0">
-                  <h3 className="text-base font-bold leading-6 text-blue-600">
-                    About Us
-                  </h3>
-                  <ul role="list" className="mt-6 space-y-4">
-                    {navigation.about.map((item) => (
-                      <li key={item.name}>
-                        <a
-                          href={item.href}
-                          className="text-sm leading-6 text-black hover:text-gray-700"
-                        >
-                          {item.name}
-                        </a>
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-              </div>
-              <div className="md:grid md:grid-cols-2 md:gap-8">
-                <div>
-                  <h3 className="text-base font-bold leading-6 text-blue-600">
-                    Buying
-                  </h3>
-                  <ul role="list" className="mt-6 space-y-4">
-                    {navigation.buy.map((item) => (
-                      <li key={item.name}>
-                        <a
-                          href={item.href}
-                          className="text-sm leading-6 text-black hover:text-gray-700"
-                        >
-                          {item.name}
-                        </a>
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-                <div className="mt-10 md:mt-0">
-                  <h3 className="text-base font-bold leading-6 text-blue-600">
-                    Support
-                  </h3>
-                  <ul role="list" className="mt-6 space-y-4">
-                    {navigation.help.map((item) => (
-                      <li key={item.name}>
-                        <a
-                          href={item.href}
-                          className="text-sm leading-6 text-black hover:text-gray-700"
-                        >
-                          {item.name}
-                        </a>
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-              </div>
-            </div>
+          </Link>
+
+          {/* Copyright */}
+          <CopyrightPara />
+
+          {/* Links + social */}
+          <div className="flex items-center gap-4">
+            <Link
+              href="/privacy"
+              className="text-xs text-slate-400 transition-colors hover:text-brand sm:text-sm"
+            >
+              Privacy
+            </Link>
+
+            <Link
+              href="/terms"
+              className="text-xs text-slate-400 transition-colors hover:text-brand sm:text-sm"
+            >
+              Terms
+            </Link>
+
+            <Link
+              href="/contact"
+              className="text-xs text-slate-400 transition-colors hover:text-brand sm:text-sm"
+            >
+              Contact
+            </Link>
+
+            <span className="hidden h-4 w-px bg-slate-200 sm:block" />
+
+            <a
+              href="#"
+              aria-label="Facebook"
+              className="text-slate-400 transition-colors hover:text-brand"
+            >
+              <FaFacebookF className="text-xs" />
+            </a>
+
+            <a
+              href="#"
+              aria-label="Instagram"
+              className="text-slate-400 transition-colors hover:text-brand"
+            >
+              <FaInstagram className="text-xs" />
+            </a>
+
+            <a
+              href="#"
+              aria-label="X"
+              className="text-slate-400 transition-colors hover:text-brand"
+            >
+              <FaXTwitter className="text-xs" />
+            </a>
+
+            <a
+              href="#"
+              aria-label="LinkedIn"
+              className="text-slate-400 transition-colors hover:text-brand"
+            >
+              <FaLinkedinIn className="text-xs" />
+            </a>
           </div>
         </div>
+
+        {/*
+        Navigation intentionally kept commented.
+
+        <div className="grid grid-cols-2 gap-8 sm:grid-cols-4">
+          ...
+        </div>
+        */}
       </div>
     </footer>
   );

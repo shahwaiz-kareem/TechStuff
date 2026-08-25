@@ -1,7 +1,7 @@
 // *********************
 // Role of the component: Buy Now button that adds product to the cart and redirects to the checkout page
 // Name of the component: BuyNowSingleProductBtn.tsx
-// Developer: Aleksandar Kuzmanovic
+// Developer: Shahwaiz Karim
 // Version: 1.0
 // Component call: <BuyNowSingleProductBtn product={product} quantityCount={quantityCount} />
 // Input parameters: SingleProductBtnProps interface
@@ -36,7 +36,7 @@ const BuyNowSingleProductBtn = ({
   return (
     <button
       onClick={handleAddToCart}
-      className="btn w-[200px] text-lg border border-blue-500 hover:border-blue-500 border-1 font-normal bg-blue-500 text-white hover:bg-white hover:scale-110 hover:text-blue-500 transition-all uppercase ease-in max-[500px]:w-full"
+      className="btn w-[200px] text-lg border border-blue-500 hover:border-blue-500 border-1 font-normal bg-brand text-white hover:bg-white hover:scale-110 hover:text-brand/90 transition-all uppercase ease-in max-[500px]:w-full"
     >
       Buy Now
     </button>

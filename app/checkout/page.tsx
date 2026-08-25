@@ -23,7 +23,7 @@ const CheckoutPage = () => {
     postalCode: "",
     orderNotice: "",
   });
-  
+
   const [isSubmitting, setIsSubmitting] = useState(false);
   const { products, total, clearCart } = useProductStore();
   const router = useRouter();
@@ -31,59 +31,59 @@ const CheckoutPage = () => {
   // Add validation functions that match server requirements
   const validateForm = () => {
     const errors: string[] = [];
-    
+
     // Name validation
     if (!checkoutForm.name.trim() || checkoutForm.name.trim().length < 2) {
       errors.push("Name must be at least 2 characters");
     }
-    
+
     // Lastname validation
     if (!checkoutForm.lastname.trim() || checkoutForm.lastname.trim().length < 2) {
       errors.push("Lastname must be at least 2 characters");
     }
-    
+
     // Email validation
     const emailRegex = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$/;
     if (!checkoutForm.email.trim() || !emailRegex.test(checkoutForm.email.trim())) {
       errors.push("Please enter a valid email address");
     }
-    
+
     // Phone validation (must be at least 10 digits)
     const phoneDigits = checkoutForm.phone.replace(/[^0-9]/g, '');
     if (!checkoutForm.phone.trim() || phoneDigits.length < 10) {
       errors.push("Phone number must be at least 10 digits");
     }
-    
+
     // Company validation
     if (!checkoutForm.company.trim() || checkoutForm.company.trim().length < 5) {
       errors.push("Company must be at least 5 characters");
     }
-    
+
     // Address validation
     if (!checkoutForm.adress.trim() || checkoutForm.adress.trim().length < 5) {
       errors.push("Address must be at least 5 characters");
     }
-    
+
     // Apartment validation (updated to 1 character minimum)
     if (!checkoutForm.apartment.trim() || checkoutForm.apartment.trim().length < 1) {
       errors.push("Apartment is required");
     }
-    
+
     // City validation
     if (!checkoutForm.city.trim() || checkoutForm.city.trim().length < 5) {
       errors.push("City must be at least 5 characters");
     }
-    
+
     // Country validation
     if (!checkoutForm.country.trim() || checkoutForm.country.trim().length < 5) {
       errors.push("Country must be at least 5 characters");
     }
-    
+
     // Postal code validation
     if (!checkoutForm.postalCode.trim() || checkoutForm.postalCode.trim().length < 3) {
       errors.push("Postal code must be at least 3 characters");
     }
-    
+
     return errors;
   };
 
@@ -99,11 +99,11 @@ const CheckoutPage = () => {
 
     // Basic client-side checks for required fields (UX only)
     const requiredFields = [
-      'name', 'lastname', 'phone', 'email', 'company', 
+      'name', 'lastname', 'phone', 'email', 'company',
       'adress', 'apartment', 'city', 'country', 'postalCode'
     ];
-    
-    const missingFields = requiredFields.filter(field => 
+
+    const missingFields = requiredFields.filter(field =>
       !checkoutForm[field as keyof typeof checkoutForm]?.trim()
     );
 
@@ -126,7 +126,7 @@ const CheckoutPage = () => {
 
     try {
       console.log("🚀 Starting order creation...");
-      
+
       // Get user ID if logged in
       let userId = null;
       if (session?.user?.email) {
@@ -144,7 +144,7 @@ const CheckoutPage = () => {
           console.log("⚠️  Error getting user ID:", userError);
         }
       }
-      
+
       // Prepare the order data
       const orderData = {
         name: checkoutForm.name.trim(),
@@ -172,18 +172,18 @@ const CheckoutPage = () => {
       console.log("  Status:", response.status);
       console.log("  Status Text:", response.statusText);
       console.log("  Response OK:", response.ok);
-      
+
       // Check if response is ok before parsing
       if (!response.ok) {
         console.error("❌ Response not OK:", response.status, response.statusText);
         const errorText = await response.text();
         console.error("Error response body:", errorText);
-        
+
         // Try to parse as JSON to get detailed error info
         try {
           const errorData = JSON.parse(errorText);
           console.error("Parsed error data:", errorData);
-          
+
           // Handle different error types
           if (response.status === 409) {
             // Duplicate order error
@@ -205,13 +205,13 @@ const CheckoutPage = () => {
           console.error("Could not parse error as JSON:", parseError);
           toast.error("Order creation failed. Please try again.");
         }
-        
+
         return; // Stop execution instead of throwing
       }
 
       const data = await response.json();
       console.log("✅ Parsed response data:", data);
-      
+
       const orderId: string = data.id;
       console.log("🆔 Extracted order ID:", orderId);
 
@@ -230,7 +230,7 @@ const CheckoutPage = () => {
           productId: products[i].id,
           quantity: products[i].amount
         });
-        
+
         await addOrderProduct(orderId, products[i].id, products[i].amount);
         console.log(`✅ Product ${i + 1} added successfully`);
       }
@@ -252,7 +252,7 @@ const CheckoutPage = () => {
         orderNotice: "",
       });
       clearCart();
-      
+
       // Refresh notification count if user is logged in
       try {
         // This will trigger a refresh of notifications in the background
@@ -260,14 +260,14 @@ const CheckoutPage = () => {
       } catch (error) {
         console.log('Note: Could not trigger notification refresh');
       }
-      
+
       toast.success("Order created successfully! You will be contacted for payment.");
       setTimeout(() => {
         router.push("/");
       }, 1000);
     } catch (error: any) {
       console.error("💥 Error in makePurchase:", error);
-      
+
       // Handle server validation errors
       if (error.response?.status === 400) {
         console.log(" Handling 400 error...");
@@ -308,7 +308,7 @@ const CheckoutPage = () => {
         productId,
         quantity: productQuantity
       });
-      
+
       const response = await apiClient.post("/api/order-product", {
         customerOrderId: orderId,
         productId: productId,
@@ -316,7 +316,7 @@ const CheckoutPage = () => {
       });
 
       console.log("📡 Product order response:", response);
-      
+
       if (!response.ok) {
         const errorText = await response.text();
         console.error("❌ Product order failed:", response.status, errorText);
@@ -325,7 +325,7 @@ const CheckoutPage = () => {
 
       const data = await response.json();
       console.log("✅ Product order successful:", data);
-      
+
     } catch (error) {
       console.error("💥 Error creating product order:", error);
       throw error;
@@ -342,7 +342,7 @@ const CheckoutPage = () => {
   return (
     <div className="bg-white">
       <SectionTitle title="Checkout" path="Home | Cart | Checkout" />
-      
+
       <div className="hidden h-full w-1/2 bg-white lg:block" aria-hidden="true" />
       <div className="hidden h-full w-1/2 bg-gray-50 lg:block" aria-hidden="true" />
 
@@ -749,7 +749,7 @@ const CheckoutPage = () => {
                 type="button"
                 onClick={makePurchase}
                 disabled={isSubmitting}
-                className="w-full rounded-md border border-transparent bg-blue-500 px-20 py-2 text-lg font-medium text-white shadow-sm hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-600 focus:ring-offset-2 focus:ring-offset-gray-50 sm:order-last disabled:bg-gray-400 disabled:cursor-not-allowed"
+                className="w-full rounded-md border border-transparent bg-brand px-20 py-2 text-lg font-medium text-white shadow-sm hover:bg-brand/90 focus:outline-none focus:ring-2 focus:ring-blue-600 focus:ring-offset-2 focus:ring-offset-gray-50 sm:order-last disabled:bg-gray-400 disabled:cursor-not-allowed"
               >
                 {isSubmitting ? "Processing Order..." : "Place Order"}
               </button>

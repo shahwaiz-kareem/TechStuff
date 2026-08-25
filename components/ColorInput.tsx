@@ -1,7 +1,7 @@
 // *********************
 // Role of the component: Color chooser on single product page component
 // Name of the component: ColorInput.tsx
-// Developer: Aleksandar Kuzmanovic
+// Developer: Shahwaiz Karim
 // Version: 1.0
 // Component call: <ColorInput />
 // Input parameters: no input parameters
@@ -22,7 +22,7 @@ const ColorInput = () => {
           <FaCheck className="text-black" />
         </div>
         <div className="bg-gray-500 w-10 h-10 rounded-full cursor-pointer"></div>
-        <div className="bg-blue-500 w-10 h-10 rounded-full cursor-pointer"></div>
+        <div className="bg-brand w-10 h-10 rounded-full cursor-pointer"></div>
       </div>
     </div>
   );

@@ -8,5 +8,5 @@ export default async function Layout({
   // This function handles all authentication and authorization server-side
   await requireAdmin();
 
-  return <>{children}</>;
+  return <div className="py-2">{children}</div>;
 }

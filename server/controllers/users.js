@@ -12,13 +12,12 @@ function excludePassword(user) {
 const getAllUsers = asyncHandler(async (request, response) => {
   const users = await prisma.user.findMany({});
   // Exclude password from all users
-  const usersWithoutPasswords = users.map(user => excludePassword(user));
+  const usersWithoutPasswords = users.map((user) => excludePassword(user));
   return response.json(usersWithoutPasswords);
 });
 
 const createUser = asyncHandler(async (request, response) => {
   const { email, password, role } = request.body;
-
   // Basic validation
   if (!email || !password) {
     throw new AppError("Email and password are required", 400);
@@ -133,11 +132,11 @@ const getUser = asyncHandler(async (request, response) => {
       id: id,
     },
   });
-  
+
   if (!user) {
     throw new AppError("User not found", 404);
   }
-  
+
   // Exclude password from response
   return response.status(200).json(excludePassword(user));
 });
@@ -154,11 +153,11 @@ const getUserByEmail = asyncHandler(async (request, response) => {
       email: email,
     },
   });
-  
+
   if (!user) {
     throw new AppError("User not found", 404);
   }
-  
+
   // Exclude password from response
   return response.status(200).json(excludePassword(user));
 });

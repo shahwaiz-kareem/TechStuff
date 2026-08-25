@@ -144,7 +144,7 @@ const DashboardProductDetails = ({ params }: DashboardProductDetailsProps) => {
       <div className="flex flex-col gap-y-7 xl:ml-5 w-full max-xl:px-5">
         <h1 className="text-3xl font-semibold">Product details</h1>
         {/* Product name input div - start */}
-        
+
         <div>
           <label className="form-control w-full max-w-xs">
             <div className="label">
@@ -328,7 +328,7 @@ const DashboardProductDetails = ({ params }: DashboardProductDetailsProps) => {
           <button
             type="button"
             onClick={updateProduct}
-            className="uppercase bg-blue-500 px-10 py-5 text-lg border border-black border-gray-300 font-bold text-white shadow-sm hover:bg-blue-600 hover:text-white focus:outline-none focus:ring-2"
+            className="uppercase bg-brand px-10 py-5 text-lg border border-black border-gray-300 font-bold text-white shadow-sm hover:bg-brand/90 hover:text-white focus:outline-none focus:ring-2"
           >
             Update product
           </button>
@@ -341,10 +341,10 @@ const DashboardProductDetails = ({ params }: DashboardProductDetailsProps) => {
           </button>
         </div>
         {/* Action buttons div - end */}
-        <p className="text-xl max-sm:text-lg text-error">
+        {/* <p className="text-xl max-sm:text-lg text-error">
           To delete the product you first need to delete all its records in
           orders (customer_order_product table).
-        </p>
+        </p> */}
       </div>
     </div>
   );

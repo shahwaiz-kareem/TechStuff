@@ -8,6 +8,8 @@ import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import Providers from "@/Providers";
 import SessionTimeoutWrapper from "@/components/SessionTimeoutWrapper";
+import TopLoader from "@/components/TopLoader";
+import WhatsAppButton from "@/components/WhatsAppButton";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -25,6 +27,7 @@ export default async function RootLayout({
   return (
     <html lang="en" data-theme="light">
       <body className={inter.className}>
+       <TopLoader/>
         <SessionProvider session={session}>
           <SessionTimeoutWrapper />
           <Header />
@@ -33,6 +36,7 @@ export default async function RootLayout({
           </Providers>
           <Footer />
         </SessionProvider>
+        <WhatsAppButton/>
       </body>
     </html>
   );

@@ -1,7 +1,7 @@
 // *********************
 // Role of the component: Quantity input for incrementing and decrementing product quantity on the cart page
 // Name of the component: QuantityInputCart.tsx
-// Developer: Aleksandar Kuzmanovic
+// Developer: Shahwaiz Karim
 // Version: 1.0
 // Component call: <QuantityInputCart product={product} />
 // Input parameters: { product: ProductInCart }
@@ -24,7 +24,7 @@ const QuantityInputCart = ({ product } : { product: ProductInCart }) => {
       updateCartAmount(product.id, quantityCount + 1);
       calculateTotals();
 
-      
+
     } else if (actionName === "minus" && quantityCount !== 1) {
       setQuantityCount(() => quantityCount - 1);
       updateCartAmount(product.id, quantityCount - 1);

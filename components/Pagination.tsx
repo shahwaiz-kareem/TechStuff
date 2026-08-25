@@ -1,7 +1,7 @@
 // *********************
 // Role of the component: Pagination for navigating the shop page
 // Name of the component: Pagination.tsx
-// Developer: Aleksandar Kuzmanovic
+// Developer: Shahwaiz Karim
 // Version: 1.0
 // Component call: <Pagination />
 // Input parameters: no input parameters
@@ -18,16 +18,16 @@ const Pagination = () => {
   return (
     <div className="join flex justify-center py-16">
       <button
-        className="join-item btn btn-lg bg-blue-500 text-white hover:bg-white hover:text-blue-500"
+        className="join-item btn btn-lg bg-brand text-white hover:bg-white hover:text-brand/90"
         onClick={() => decrementPage()}
       >
         «
       </button>
-      <button className="join-item btn btn-lg bg-blue-500 text-white hover:bg-white hover:text-blue-500">
+      <button className="join-item btn btn-lg bg-brand text-white hover:bg-white hover:text-brand/90">
         Page {page}
       </button>
       <button
-        className="join-item btn btn-lg bg-blue-500 text-white hover:bg-white hover:text-blue-500"
+        className="join-item btn btn-lg bg-brand text-white hover:bg-white hover:text-brand/90"
         onClick={() => incrementPage()}
       >
         »

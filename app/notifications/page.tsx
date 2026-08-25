@@ -7,13 +7,13 @@ import { useNotifications } from '@/hooks/useNotifications';
 import { NotificationType } from '@/types/notification';
 import NotificationCard from '@/components/NotificationCard';
 import { useNotificationStore } from '@/app/_zustand/notificationStore';
-import { 
-  FaSearch, 
-  FaFilter, 
-  FaCheckCircle, 
-  FaTrash, 
+import {
+  FaSearch,
+  FaFilter,
+  FaCheckCircle,
+  FaTrash,
   FaSpinner,
-  FaBell 
+  FaBell
 } from 'react-icons/fa';
 
 const NotificationsPage = () => {
@@ -73,7 +73,7 @@ const NotificationsPage = () => {
   // Handle search
   const handleSearch = (e: React.FormEvent) => {
     e.preventDefault();
-    updateFilters({ 
+    updateFilters({
       ...filters,
       search: searchTerm || undefined,
       page: 1
@@ -124,7 +124,7 @@ const NotificationsPage = () => {
   if (status === 'loading') {
     return (
       <div className="min-h-screen flex items-center justify-center">
-        <FaSpinner className="animate-spin text-4xl text-blue-500" />
+        <FaSpinner className="animate-spin text-4xl text-brand" />
       </div>
     );
   }
@@ -140,7 +140,7 @@ const NotificationsPage = () => {
         {/* Header */}
         <div className="mb-8">
           <div className="flex items-center space-x-3 mb-2">
-            <FaBell className="text-2xl text-blue-600" />
+            <FaBell className="text-2xl text-brand" />
             <h1 className="text-3xl font-bold text-gray-900">Notification Center</h1>
           </div>
           <p className="text-gray-600">
@@ -207,10 +207,10 @@ const NotificationsPage = () => {
                 setSearchTerm('');
                 setSelectedType('all');
                 setSelectedStatus('all');
-                updateFilters({ 
-                  type: undefined, 
-                  isRead: undefined, 
-                  search: undefined, 
+                updateFilters({
+                  type: undefined,
+                  isRead: undefined,
+                  search: undefined,
                   page: 1,
                   limit: 10,
                   sortBy: 'createdAt',
@@ -234,7 +234,7 @@ const NotificationsPage = () => {
               <div className="flex space-x-3">
                 <button
                   onClick={handleBulkMarkAsRead}
-                  className="inline-flex items-center px-3 py-1 text-sm font-medium text-blue-600 bg-white border border-blue-300 rounded-md hover:bg-blue-50 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-1"
+                  className="inline-flex items-center px-3 py-1 text-sm font-medium text-brand bg-white border border-blue-300 rounded-md hover:bg-blue-50 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-1"
                 >
                   <FaCheckCircle className="w-4 h-4 mr-1" />
                   Mark as Read
@@ -259,7 +259,7 @@ const NotificationsPage = () => {
                 type="checkbox"
                 checked={selectedIds.length === notifications.length && notifications.length > 0}
                 onChange={handleSelectAll}
-                className="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 focus:ring-2"
+                className="w-4 h-4 text-brand bg-gray-100 border-gray-300 rounded focus:ring-blue-500 focus:ring-2"
               />
               <span>Select all notifications</span>
             </label>

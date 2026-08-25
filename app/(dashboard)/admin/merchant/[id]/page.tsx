@@ -34,7 +34,7 @@ export default function MerchantDetailPage({
   // Unwrap params using React.use()
   const resolvedParams = use(params);
   const id = resolvedParams.id;
-  
+
   const [merchant, setMerchant] = useState<Merchant | null>(null);
   const [loading, setLoading] = useState(true);
   const [formData, setFormData] = useState({
@@ -52,7 +52,7 @@ export default function MerchantDetailPage({
     try {
       setLoading(true);
       const response = await apiClient.get(`/api/merchants/${id}`);
-      
+
       if (!response.ok) {
         if (response.status === 404) {
           router.push("/admin/merchant");
@@ -60,7 +60,7 @@ export default function MerchantDetailPage({
         }
         throw new Error("Failed to fetch merchant");
       }
-      
+
       const data = await response.json();
       setMerchant(data);
       setFormData({
@@ -81,7 +81,7 @@ export default function MerchantDetailPage({
 
   useEffect(() => {
     fetchMerchant();
-  }, [id]); 
+  }, [id]);
 
 const handleInputChange = (
     e: React.ChangeEvent<
@@ -115,15 +115,15 @@ const handleInputChange = (
     if (!confirm("Are you sure you want to delete this merchant?")) {
       return;
     }
-    
+
     try {
       const response = await apiClient.delete(`/api/merchants/${id}`);
-      
+
       if (!response.ok) {
         const data = await response.json();
         throw new Error(data.error || "Failed to delete merchant");
       }
-      
+
       toast.success("Merchant deleted successfully");
       router.push("/admin/merchant");
     } catch (error) {
@@ -245,9 +245,9 @@ const handleInputChange = (
               ></textarea>
             </div>
             <div className="md:col-span-2">
-              <button 
+              <button
                 type="submit"
-                className="bg-blue-500 text-white px-6 py-2 rounded-md hover:bg-blue-600 transition"
+                className="bg-brand text-white px-6 py-2 rounded-md hover:bg-brand/90 transition"
               >
                 Save Changes
               </button>
@@ -276,7 +276,7 @@ const handleInputChange = (
                     <td className="py-4">
                       <Link
                         href={`/admin/products/${product.id}`}
-                        className="text-blue-500 hover:underline"
+                        className="text-brand hover:underline"
                       >
                         View
                       </Link>
