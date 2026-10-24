@@ -20,5 +20,5 @@ Reengineered and optimized **Singtronic**, a popular open-source e-commerce plat
 * **Resolved a critical authentication system bug** to secure user login and registration flows.
 
 ## Tech Stack
-* **Frontend:** HTML5, CSS3, Tailwind CSS, JavaScript (ES6+)
+* **Frontend:** NextJs, Tailwind CSS, TypeScript 
 * **Platform Baseline:** Singtronic Open-Source E-Commerce
